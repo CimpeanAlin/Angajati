@@ -1,0 +1,183 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > EmployeeMock</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">AngajatiApp.repository</a>
+</div>
+
+<h1>Coverage Summary for Class: EmployeeMock (AngajatiApp.repository)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EmployeeMock</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (4/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (24/28)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package AngajatiApp.repository;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import AngajatiApp.controller.DidacticFunction;
+&nbsp;import AngajatiApp.model.Employee;
+&nbsp;import AngajatiApp.validator.EmployeeValidator;
+&nbsp;
+&nbsp;public class EmployeeMock implements EmployeeRepositoryInterface {
+&nbsp;
+&nbsp;	private List&lt;Employee&gt; employeeList;
+&nbsp;	private EmployeeValidator employeeValidator;
+&nbsp;
+<b class="fc">&nbsp;	public EmployeeMock() {</b>
+<b class="fc">&nbsp;		employeeValidator = new EmployeeValidator();</b>
+<b class="fc">&nbsp;		employeeList = new ArrayList&lt;Employee&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;		Employee Ionel = new Employee(&quot;Marius&quot;, &quot;Pacuraru&quot;, &quot;1234567890876&quot;, DidacticFunction.ASISTENT, 2500d);</b>
+<b class="fc">&nbsp;		Employee Mihai = new Employee(&quot;Ion&quot;, &quot;Dumitrescu&quot;, &quot;1234567890876&quot;, DidacticFunction.LECTURER, 2500d);</b>
+<b class="fc">&nbsp;		Employee Ionela = new Employee(&quot;Gicu&quot;, &quot;Ionescu&quot;, &quot;1234567890876&quot;, DidacticFunction.LECTURER, 2500d);</b>
+<b class="fc">&nbsp;		Employee Mihaela = new Employee(&quot;Dodel&quot;, &quot;Pacuraru&quot;, &quot;1234567890876&quot;, DidacticFunction.ASISTENT, 2500d);</b>
+<b class="fc">&nbsp;		Employee Vasile = new Employee(&quot;Dorel&quot;, &quot;Georgescu&quot;, &quot;1234567890876&quot;, DidacticFunction.TEACHER, 2500d);</b>
+<b class="fc">&nbsp;		Employee Marin   = new Employee(&quot;Larson&quot;, &quot;Puscas&quot;, &quot;1234567890876&quot;, DidacticFunction.TEACHER,  2500d);</b>
+&nbsp;
+<b class="fc">&nbsp;		employeeList.add(Ionel);</b>
+<b class="fc">&nbsp;		employeeList.add(Mihai);</b>
+<b class="fc">&nbsp;		employeeList.add(Ionela);</b>
+<b class="fc">&nbsp;		employeeList.add(Mihaela);</b>
+<b class="fc">&nbsp;		employeeList.add(Vasile);</b>
+<b class="fc">&nbsp;		employeeList.add(Marin);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	/**
+&nbsp;	 * adauga un angajat in repository
+&nbsp;	 * @param employee - un angajat cu atributele id, nlastName, firstName, cnp,
+&nbsp;	 *                 function, salary;
+&nbsp;	 * @return boolean - false daca employee nu este valid
+&nbsp;	 */
+&nbsp;	@Override
+&nbsp;	public boolean addEmployee(Employee employee) {
+<b class="fc">&nbsp;		if ( employeeValidator.isValid(employee)) {</b>
+<b class="nc">&nbsp;			employeeList.add(employee);</b>
+<b class="nc">&nbsp;			return true;</b>
+&nbsp;		}
+<b class="fc">&nbsp;		return false;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	/**
+&nbsp;	 * Modifica atributul &#39;functia didactica&#39; pentru un angajat dat
+&nbsp;	 * @param employee - anagajtul eptnru care se modifica atributul &#39;functia didactica&#39;
+&nbsp;	 * @param newFunction - noua functie didactica (ASISTENT, LECTURER, TEACHER, CONFERENTIAR)
+&nbsp;	 */
+&nbsp;	@Override
+&nbsp;	public void modifyEmployeeFunction(Employee employee, DidacticFunction newFunction) {
+&nbsp;		if (employee!=null) {
+<b class="fc">&nbsp;			int i = 0;</b>
+<b class="fc">&nbsp;			while (i &lt; employeeList.size()) {</b>
+<b class="fc">&nbsp;				if (employeeList.get(i).getId() == employee.getId())</b>
+<b class="fc">&nbsp;					employeeList.get(i).setFunction(newFunction);</b>
+<b class="fc">&nbsp;				i++; } } }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;	@Override
+&nbsp;	public List&lt;Employee&gt; getEmployeeList() {
+&nbsp;		return employeeList;
+<b class="fc">&nbsp;	}</b>
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public List&lt;Employee&gt; getEmployeeByCriteria() {
+&nbsp;		// TODO Auto-generated method stub
+&nbsp;		return null;
+<b class="nc">&nbsp;	}</b>
+&nbsp;
+&nbsp;	@Override
+&nbsp;	public Employee findEmployeeById(int idOldEmployee) {
+&nbsp;		// TODO Auto-generated method stub
+&nbsp;		return null;
+<b class="nc">&nbsp;	}</b>
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-03 19:22</div>
+</div>
+</body>
+</html>

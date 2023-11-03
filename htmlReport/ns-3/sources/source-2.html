@@ -1,0 +1,274 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Employee</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">AngajatiApp.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Employee (AngajatiApp.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Employee</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    38.9%
+  </span>
+  <span class="absValue">
+    (7/18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    18.5%
+  </span>
+  <span class="absValue">
+    (12/65)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package AngajatiApp.model;
+&nbsp;
+&nbsp;import AngajatiApp.controller.DidacticFunction;
+&nbsp;import AngajatiApp.validator.EmployeeException;
+&nbsp;import AngajatiApp.validator.EmployeeValidator;
+&nbsp;
+&nbsp;public class Employee {
+&nbsp;	private static final int LAST_NAME_INDEX = 1;
+&nbsp;	private static final int FIRST_NAME_INDEX = 0;
+&nbsp;	private static final int CNP_INDEX = 2;
+&nbsp;	private static final int DIDACTIC_FUNCTION_INDEX = 3;
+&nbsp;	private static final int SALARY_INDEX = 4;
+&nbsp;	private static final int ID = 5;
+&nbsp;	private int id;
+&nbsp;	private String nume;/** The last name of the employee */
+&nbsp;	private String firstName; /** The first name of the employee */
+&nbsp;	private String cnp; /** The unique id of the employee */
+&nbsp;	private DidacticFunction function; /** The didactic function of the employee inside the university */
+&nbsp;	private Double salary; /** The salary of the employee */
+&nbsp;	
+&nbsp;	/**
+&nbsp;	 * Default constructor for employee
+&nbsp;	 */
+<b class="nc">&nbsp;	public Employee() {</b>
+<b class="nc">&nbsp;		this.firstName = &quot;&quot;;</b>
+<b class="nc">&nbsp;		this.nume  = &quot;&quot;;</b>
+<b class="nc">&nbsp;		this.cnp       = &quot;&quot;;</b>
+<b class="nc">&nbsp;		this.function  = DidacticFunction.ASISTENT;</b>
+<b class="nc">&nbsp;		this.salary    = 0.0d;</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;	/**
+&nbsp;	 * Constructor with fields for employee
+&nbsp;	 */
+<b class="fc">&nbsp;	public Employee(String firstName, String lastName, String cnp, DidacticFunction function, Double salary) {</b>
+<b class="fc">&nbsp;		this.firstName = firstName;</b>
+<b class="fc">&nbsp;		this.nume  = lastName;</b>
+<b class="fc">&nbsp;		this.cnp       = cnp;</b>
+<b class="fc">&nbsp;		this.function  = function;</b>
+<b class="fc">&nbsp;		this.salary    = salary;</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;	public int getId() {
+<b class="fc">&nbsp;		return id;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public void setId(int id) {
+<b class="nc">&nbsp;		this.id = id;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public String getFirstName() {
+<b class="fc">&nbsp;		return firstName;</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;	public void setFirstName(String firstName) {
+<b class="nc">&nbsp;		this.firstName = firstName;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public String getLastName() {
+<b class="fc">&nbsp;		return nume;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public void setLastName(String lastName) {
+<b class="nc">&nbsp;		this.nume = lastName;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public String getCnp() {
+<b class="fc">&nbsp;		return cnp;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public void setCnp(String cnp) {
+<b class="nc">&nbsp;		this.cnp = cnp;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public DidacticFunction getFunction() {
+<b class="fc">&nbsp;		return function;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public void setFunction(DidacticFunction function) {
+<b class="fc">&nbsp;		this.function = function;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public Double getSalary() {
+<b class="nc">&nbsp;		return salary;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	public void setSalary(Double salary) {
+<b class="nc">&nbsp;		this.salary = salary;</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;	@Override
+&nbsp;	public String toString() {
+<b class="nc">&nbsp;		String employee = &quot;&quot;;</b>
+<b class="nc">&nbsp;		employee += firstName + &quot;;&quot;;</b>
+<b class="nc">&nbsp;		employee += nume + &quot;;&quot;;</b>
+<b class="nc">&nbsp;		employee += cnp + &quot;;&quot;;</b>
+<b class="nc">&nbsp;		employee += function.toString() + &quot;;&quot;;</b>
+<b class="nc">&nbsp;		employee += salary + &quot;;&quot;;</b>
+<b class="nc">&nbsp;		employee += id;</b>
+<b class="nc">&nbsp;		return employee;</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;	@Override
+&nbsp;	public boolean equals(Object otherEmployee) {
+<b class="nc">&nbsp;		if (otherEmployee == this) {</b>
+<b class="nc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="nc">&nbsp;		if (!(otherEmployee instanceof Employee)) {</b>
+<b class="nc">&nbsp;            return false;</b>
+&nbsp;        }
+<b class="nc">&nbsp;		final Employee employee = (Employee) otherEmployee;</b>
+<b class="nc">&nbsp;		boolean hasSameFirstName = this.firstName.equals(employee.getLastName()),</b>
+<b class="nc">&nbsp;				hasSameLastName  = this.nume.equals(employee.getLastName()),</b>
+<b class="nc">&nbsp;				hasSameCNP       = this.cnp.equals(employee.getCnp()),</b>
+<b class="nc">&nbsp;				hasSameFunction  = this.function.equals(employee.getFunction()),</b>
+<b class="nc">&nbsp;				hasSameSalary    = this.salary.equals(employee.getSalary());</b>
+<b class="nc">&nbsp;		return hasSameFirstName &amp;&amp; hasSameLastName &amp;&amp; hasSameCNP &amp;&amp; hasSameFunction &amp;&amp; hasSameSalary;</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;	@Override
+&nbsp;	public int hashCode() {
+<b class="nc">&nbsp;		return this.hashCode();</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;	/**
+&nbsp;	 * Returns the Employee after parsing the given line
+&nbsp;	 * 
+&nbsp;	 * @param employeeString
+&nbsp;	 *            the employee given as String from the input file
+&nbsp;	 * @param line
+&nbsp;	 *            the current line in the file
+&nbsp;	 * 
+&nbsp;	 * @return if the given line is valid returns the corresponding Employee
+&nbsp;	 * @throws EmployeeException
+&nbsp;	 */
+&nbsp;	public static Employee getEmployeeFromString(String employeeString, int line) throws EmployeeException {
+<b class="nc">&nbsp;		Employee employee = new Employee();</b>
+&nbsp;
+<b class="nc">&nbsp;		String[] attributes = employeeString.split(&quot;[;]&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;		if (attributes.length != 6) {</b>
+<b class="nc">&nbsp;			throw new EmployeeException(&quot;Invalid line at: &quot; + line);</b>
+&nbsp;		} else {
+<b class="nc">&nbsp;			EmployeeValidator validator = new EmployeeValidator();</b>
+<b class="nc">&nbsp;			employee.setFirstName(attributes[FIRST_NAME_INDEX]);</b>
+<b class="nc">&nbsp;			employee.setLastName(attributes[LAST_NAME_INDEX]);</b>
+<b class="nc">&nbsp;			employee.setCnp(attributes[CNP_INDEX]);</b>
+&nbsp;
+<b class="nc">&nbsp;			if (attributes[DIDACTIC_FUNCTION_INDEX].equals(&quot;ASISTENT&quot;))</b>
+<b class="nc">&nbsp;				employee.setFunction(DidacticFunction.ASISTENT);</b>
+<b class="nc">&nbsp;			if (attributes[DIDACTIC_FUNCTION_INDEX].equals(&quot;LECTURER&quot;))</b>
+<b class="nc">&nbsp;				employee.setFunction(DidacticFunction.LECTURER);</b>
+<b class="nc">&nbsp;			if (attributes[DIDACTIC_FUNCTION_INDEX].equals(&quot;TEACHER&quot;))</b>
+<b class="nc">&nbsp;				employee.setFunction(DidacticFunction.TEACHER);</b>
+<b class="nc">&nbsp;			if (attributes[DIDACTIC_FUNCTION_INDEX].equals(&quot;CONFERENTIAR&quot;))</b>
+<b class="nc">&nbsp;				employee.setFunction(DidacticFunction.CONFERENTIAR);</b>
+&nbsp;
+<b class="nc">&nbsp;			employee.setSalary(Double.valueOf(attributes[SALARY_INDEX]));</b>
+&nbsp;			//employee.setId(Integer.valueOf(attributes[ID]));
+<b class="nc">&nbsp;			employee.setId(Integer.valueOf(line));</b>
+&nbsp;
+<b class="nc">&nbsp;			if (!validator.isValid(employee)) {</b>
+<b class="nc">&nbsp;				throw new EmployeeException(&quot;Invalid line at: &quot; + line);</b>
+&nbsp;			}
+&nbsp;		}
+&nbsp;
+<b class="nc">&nbsp;		return employee;</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-03 19:22</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > EmployeeValidator</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">AngajatiApp.validator</a>
+</div>
+
+<h1>Coverage Summary for Class: EmployeeValidator (AngajatiApp.validator)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EmployeeValidator</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    71.4%
+  </span>
+  <span class="absValue">
+    (5/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (7/14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package AngajatiApp.validator;
+&nbsp;
+&nbsp;import AngajatiApp.controller.DidacticFunction;
+&nbsp;import AngajatiApp.model.Employee;
+&nbsp;
+&nbsp;public class EmployeeValidator {
+&nbsp;
+<b class="fc">&nbsp;	public EmployeeValidator(){}</b>
+&nbsp;
+&nbsp;	public boolean isValid(Employee employee) {
+<b class="fc">&nbsp;		return isFirstNameValid(employee) </b>
+<b class="fc">&nbsp;				&amp;&amp; isLastNameValid(employee) </b>
+<b class="fc">&nbsp;				&amp;&amp; isCnpValid(employee) </b>
+<b class="nc">&nbsp;				&amp;&amp; isFunctionValid(employee) </b>
+<b class="nc">&nbsp;				&amp;&amp; isSalaryValid(employee);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	private boolean isSalaryValid(Employee employee) {
+<b class="nc">&nbsp;		return employee.getSalary() &gt; 0;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	private boolean isFunctionValid(Employee employee) {
+<b class="nc">&nbsp;		return employee.getFunction().equals(DidacticFunction.ASISTENT)</b>
+<b class="nc">&nbsp;				|| employee.getFunction().equals(DidacticFunction.LECTURER) </b>
+<b class="nc">&nbsp;				|| employee.getFunction().equals(DidacticFunction.TEACHER) </b>
+<b class="nc">&nbsp;				|| employee.getFunction().equals(DidacticFunction.CONFERENTIAR);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	private boolean isCnpValid(Employee employee) {
+<b class="fc">&nbsp;		return employee.getCnp().matches(&quot;[a-z0-9]+&quot;) &amp;&amp; (employee.getCnp().length() == 13);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	private boolean isLastNameValid(Employee employee) {
+<b class="fc">&nbsp;		return employee.getLastName().matches(&quot;[a-zA-Z]+&quot;) &amp;&amp; (employee.getLastName().length() &gt; 2);</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	private boolean isFirstNameValid(Employee employee) {
+<b class="fc">&nbsp;		return employee.getFirstName().matches(&quot;[a-zA-Z]+&quot;) &amp;&amp; (employee.getFirstName().length() &gt; 2);</b>
+&nbsp;	}
+&nbsp;	
+&nbsp;}
+&nbsp;
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-03 19:22</div>
+</div>
+</body>
+</html>
